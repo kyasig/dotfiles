@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixmobar.url = "git+https://codeberg.org/xmobar/xmobar.git/?dir=nix";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { self, nixpkgs, ... }@inputs:
@@ -34,8 +38,9 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = ".bak";
                 extraSpecialArgs = {
-                  inherit pkgs inputs;
+                  inherit pkgs inputs system ;
                 };
                 users.ky = {
                   imports = [

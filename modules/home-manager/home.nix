@@ -7,6 +7,7 @@
     ./kitty.nix
     ./neovim.nix
     ./zathura.nix
+    ./librewolf.nix
   ];
   home = {
     #username = ky;
@@ -16,6 +17,7 @@
       discord
       thunderbird
       texliveFull
+      freetube
     ];
   };
   programs.home-manager.enable = true;

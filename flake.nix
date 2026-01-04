@@ -3,22 +3,43 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixmobar.url = "git+https://codeberg.org/xmobar/xmobar.git/?dir=nix";
   };
-
-  outputs = { self, nixpkgs,...}:
-  let
-    system = "x86_64-linux";
-  in
-  {
-    nixosConfigurations = {
-      victus = nixpkgs.lib.nixosSystem {
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
         inherit system;
-        modules = [
-          ./hosts/victus
-          ./modules/nixos/configuration.nix
-        ];
+        config.allowUnfree = true;
+      };
+    in
+    {
+      nixosConfigurations = {
+        victus = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/victus
+            ./modules/nixos/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              users.ky ={
+                imports = [
+                  inputs.nixmobar.homeModules.mainmodule
+                ];
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }
-

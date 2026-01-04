@@ -3,6 +3,7 @@
   imports = [
     ./xmonad.nix
     ./xmobar.nix
+    ./kitty.nix
   ];
   home = {
     #username = ky;

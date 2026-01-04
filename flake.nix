@@ -31,7 +31,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs;
+                  inherit pkgs inputs;
                 };
                 users.ky = {
                   imports = [

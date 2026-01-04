@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./audio.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -51,14 +52,6 @@
   # Enable CUPS to print documents.
    services.printing.enable = true;
 
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-   };
-
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
 
@@ -70,6 +63,7 @@
       kitty
       rofi
       lazygit
+      nixfmt-rfc-style
      ];
    };
 
@@ -80,15 +74,16 @@
    environment.systemPackages = with pkgs; [
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      git
+     xclip
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+   programs.mtr.enable = true;
+   programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+   };
 
   # List services that you want to enable:
 

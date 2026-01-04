@@ -11,7 +11,7 @@ let
     "mkdir" = "mkdir -vp";
     "n" = "nvim";
     "y" = "yazi";
-    "nf" = "fd -H -tf | fzf  --prompt='edit file: ' --preview 'bat --style=numbers --color=always {}' --border-label='╢Edit File╟'| xargs -r nvim";
+    "nf" = "fd -H -tf | fzf  --prompt='edit file: ' --preview 'bat --style=numbers --color=always {}' --border-label='╢Edit File╟'| xargs -r $EDITOR";
     "fpdf" = "fd -tf --glob '*.pdf' | fzf --border=double --prompt='Open PDF: ' | xargs  -r zathura";
     "fy" = "yazi $(fd -t d | fzf)";
     "ac" = "ani-cli";
@@ -79,7 +79,7 @@ in
     '';
   };
   programs.bash = {
-    enable = true;
+    enable = false;
     enableCompletion = true;
     shellAliases = myAliases;
   };

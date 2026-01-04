@@ -27,15 +27,18 @@
             ./modules/nixos/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-              users.ky ={
-                imports = [
-                  inputs.nixmobar.homeModules.mainmodule
-                ];
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+                users.ky = {
+                  imports = [
+                    ./modules/home-manager/home.nix
+                    inputs.nixmobar.homeModules.mainmodule
+                  ];
+                };
               };
             }
           ];

@@ -41,7 +41,7 @@
                   imports = [
                     ./modules/home-manager/home.nix
                     inputs.nixmobar.homeModules.mainmodule
-		    inputs.nixvim.homeModules.nixvim
+                    inputs.nixvim.homeModules.nixvim
                   ];
                 };
               };

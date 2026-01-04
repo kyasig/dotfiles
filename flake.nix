@@ -24,7 +24,7 @@
           inherit system;
           modules = [
             ./hosts/victus
-            ./modules/nixos/configuration.nix
+            ./modules/nixos/common.nix
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {

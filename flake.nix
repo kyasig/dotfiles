@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixmobar.url = "git+https://codeberg.org/xmobar/xmobar.git/?dir=nix";
   };
   outputs =
@@ -21,7 +25,7 @@
     {
       nixosConfigurations = {
         victus = nixpkgs.lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           modules = [
             ./hosts/victus
             ./modules/nixos/common.nix
@@ -37,6 +41,7 @@
                   imports = [
                     ./modules/home-manager/home.nix
                     inputs.nixmobar.homeModules.mainmodule
+		    inputs.nixvim.homeModules.nixvim
                   ];
                 };
               };

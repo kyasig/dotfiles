@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  networking.hostName = "sig"; 
+  networking.hostName = "sig";
 
   networking.networkmanager.enable = true;
 
@@ -34,7 +34,7 @@
 
   users.users.ky = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; 
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
       rofi
       lazygit
@@ -55,6 +55,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+  programs.nano.enable = false;
 
   system.stateVersion = "26.05"; # Did you read the comment?
 

@@ -27,11 +27,14 @@
   services.xserver.enable = true;
 
   services.xserver.xkb.layout = "us";
+  services.xserver.windowManager.xmonad.enable = true;
 
   services.printing.enable = true;
 
   services.libinput.enable = true;
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   users.users.ky = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];

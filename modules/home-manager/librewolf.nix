@@ -27,5 +27,5 @@
       "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
     };
   };
-  stylix.targets.librewolf.profileNames = ["ky"];
+  stylix.targets.librewolf.profileNames = [ "ky" ];
 }

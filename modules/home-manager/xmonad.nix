@@ -1,13 +1,12 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 {
-  home.packages = with pkgs;
-  [
-   brightnessctl
-   feh
-   flameshot
-   xdotool
-   xwallpaper
-   font-awesome
+  home.packages = with pkgs; [
+    brightnessctl
+    feh
+    flameshot
+    xdotool
+    xwallpaper
+    font-awesome
   ];
   xsession.windowManager.xmonad = {
     enable = true;
@@ -41,5 +40,5 @@
   services.picom = {
     enable = true;
     backend = "glx";
-    };
+  };
 }

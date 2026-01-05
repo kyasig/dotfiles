@@ -40,7 +40,7 @@
                 useUserPackages = true;
                 backupFileExtension = ".bak";
                 extraSpecialArgs = {
-                  inherit pkgs inputs system ;
+                  inherit pkgs inputs system;
                 };
                 users.ky = {
                   imports = [

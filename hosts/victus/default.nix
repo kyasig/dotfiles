@@ -5,4 +5,3 @@
     ../../modules/nixos/virtualization.nix
   ];
 }
-

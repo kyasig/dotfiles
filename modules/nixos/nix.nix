@@ -1,4 +1,8 @@
+{ pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    nh
+  ];
   nix = {
     settings = {
       experimental-features = [
@@ -16,4 +20,3 @@
     };
   };
 }
-

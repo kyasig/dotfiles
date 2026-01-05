@@ -45,9 +45,6 @@
       nixfmt-rfc-style
     ];
   };
-
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -61,6 +58,6 @@
   };
   programs.nano.enable = false;
 
-  system.stateVersion = "26.05"; # Did you read the comment?
+  system.stateVersion = "26.05";
 
 }

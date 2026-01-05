@@ -10,14 +10,10 @@
     ./librewolf.nix
   ];
   home = {
-    #username = ky;
     homeDirectory = "/home/ky";
     stateVersion = "26.05";
     packages = with pkgs; [
-      discord
-      thunderbird
       texliveFull
-      freetube
     ];
   };
   programs.home-manager.enable = true;

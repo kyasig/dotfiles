@@ -36,7 +36,6 @@
           inherit system pkgs;
           modules = [
             ./hosts/victus
-            ./modules/nixos/common.nix
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             {
@@ -49,7 +48,7 @@
                 };
                 users.ky = {
                   imports = [
-                    ./modules/home-manager/home.nix
+                    ./hosts/victus/home.nix
                     inputs.nixmobar.homeModules.mainmodule
                     inputs.nixvim.homeModules.nixvim
                   ];

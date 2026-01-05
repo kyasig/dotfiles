@@ -1,4 +1,4 @@
---import Colors
+import Colors
 import Data.Maybe
 import XMonad
 import XMonad.Actions.CycleWorkspaceByScreen
@@ -50,9 +50,9 @@ myWorkspaces = show <$> [1 .. 9]
 
 myBorderWidth = 4
 
---myNormalBorderColor = color00
+myNormalBorderColor = color00
 
---myFocusedBorderColor = color0E
+myFocusedBorderColor = color0E
 
 -- keybindings
 myKeys =
@@ -156,7 +156,9 @@ mySB =
     clickablePP $ -- lifts pp to X pp
       filterOutWsPP [scratchpadWorkspaceTag] $
         def
-          {
+          { ppCurrent = xmobarColor color00 color0E . pad,
+            ppHidden = xmobarColor color05 "",
+            ppTitle = xmobarColor color05 "" . shorten 40,
             ppLayout =
               ( \x -> case x of
                   "Tall" -> "[]="
@@ -183,8 +185,8 @@ main =
                 manageHook = myManageHook,
                 handleEventHook = myHandleEventHook,
                 borderWidth = myBorderWidth,
-                --normalBorderColor = myNormalBorderColor,
-                --focusedBorderColor = myFocusedBorderColor,
+                normalBorderColor = myNormalBorderColor,
+                focusedBorderColor = myFocusedBorderColor,
                 workspaces = myWorkspaces,
                 logHook = workspaceHistoryHook
               }

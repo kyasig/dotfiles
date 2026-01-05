@@ -16,6 +16,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { self, nixpkgs, ... }@inputs:
@@ -34,6 +38,7 @@
             ./hosts/victus
             ./modules/nixos/common.nix
             inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
             {
               home-manager = {
                 useGlobalPkgs = true;

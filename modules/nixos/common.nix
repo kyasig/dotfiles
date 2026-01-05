@@ -10,6 +10,7 @@
     ./audio.nix
     ./nix.nix
     ./auth.nix
+    ./stylix.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

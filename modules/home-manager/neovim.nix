@@ -57,6 +57,30 @@
           markdown_oxide.enable = true;
         };
       };
+      lualine = {
+        enable = true;
+        settings = {
+          sections = {
+            lualine_a = [ "mode" ];
+            lualine_b = [
+              "branch"
+              "diff"
+              "diagnostics"
+            ];
+            lualine_c = [ "filename" ];
+            lualine_x = [ "filetype" ];
+            lualine_y = [ "progress" ];
+            lualine_z = [ ''"<U+F43A> " .. os.date("%R")'' ];
+          };
+          options = {
+            alwaysDivideMiddle = true;
+            componentSeparators = {
+              left = "|";
+              right = "|";
+            };
+          };
+        };
+      };
     };
   };
 }

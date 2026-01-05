@@ -16,6 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.tmp.cleanOnBoot = true;
 
   networking.hostName = "sig";
 
@@ -31,14 +32,21 @@
   services.xserver.windowManager.xmonad.enable = true;
 
   services.printing.enable = true;
-
   services.libinput.enable = true;
+  services.udisks2.enable = true;
+  services.openssh.enable = true;
+  services.xbanish.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.ky = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "audio"
+      "networkmanager"
+    ];
     packages = with pkgs; [
       lazygit
       nixfmt-rfc-style

@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -43,6 +42,19 @@
         settings = {
           compiler_method = "latexmk";
           view_method = "zathura";
+        };
+      };
+      lsp = {
+        enable = true;
+        lazyload.enable = true;
+        servers = {
+          nixd.enable = true;
+          texlab.enable = true;
+          hls = {
+            enable = true;
+            installGhc = false;
+          };
+          markdown_oxide.enable = true;
         };
       };
     };

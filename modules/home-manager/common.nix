@@ -8,6 +8,7 @@
     ./neovim.nix
     ./zathura.nix
     ./librewolf.nix
+    ./rofi.nix
   ];
   home = {
     homeDirectory = "/home/ky";

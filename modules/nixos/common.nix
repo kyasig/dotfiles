@@ -40,7 +40,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      rofi
       lazygit
       nixfmt-rfc-style
     ];

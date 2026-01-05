@@ -25,13 +25,12 @@
         inherit system;
         config.allowUnfree = true;
       };
-    in
-    {
-      nixosConfigurations = {
-        victus = nixpkgs.lib.nixosSystem {
+      mkNixosConfig =
+        conf: home:
+        nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           modules = [
-            ./hosts/victus
+            conf
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             {
@@ -44,7 +43,7 @@
                 };
                 users.ky = {
                   imports = [
-                    ./hosts/victus/home.nix
+                    home
                     inputs.nixmobar.homeModules.mainmodule
                     inputs.nixvim.homeModules.nixvim
                   ];
@@ -53,6 +52,11 @@
             }
           ];
         };
+    in
+    {
+      nixosConfigurations = {
+        victus = mkNixosConfig ./hosts/victus ./hosts/victus/home.nix;
+        thinkpad = mkNixosConfig ./hosts/thinkpad ./hosts/thinkpad/home.nix;
       };
     };
 }

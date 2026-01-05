@@ -76,6 +76,7 @@ in
     initContent = ''
       set -o vi
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      export PS1="%{$(tput setaf 15)%}%n%{$(tput setaf 15)%}@%{$(tput setaf 15)%}%m %{$(tput setaf 13)%}%1~ %{$(tput sgr0)%}$ "
     '';
   };
   programs.bash = {

@@ -7,6 +7,8 @@
     xdotool
     xwallpaper
     font-awesome
+    pulsemixer
+    betterlockscreen
   ];
   xsession.windowManager.xmonad = {
     enable = true;

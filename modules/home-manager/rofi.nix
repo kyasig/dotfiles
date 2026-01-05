@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
-
 {
-
   programs.rofi = {
     enable = true;
-    #font = "JetBrainsMono Nerd Font 12";
     extraConfig = {
       modi = "drun";
-      display-drun = "Spawn";
     };
     location = "center";
     plugins = with pkgs; [
@@ -34,7 +30,7 @@
         inputbar = {
           spacing = mkLiteral "0";
           padding = mkLiteral "2px";
-
+        };
         prompt = {
           margin = mkLiteral "2px";
         };
@@ -46,11 +42,10 @@
         textbox-prompt-sep = {
           expand = false;
           str = mkLiteral ''":"'';
-          #text-color = mkLiteral "@normal-foreground";
           margin = mkLiteral "0 0.3em 0 0";
         };
-
       };
+    terminal = "${pkgs.kitty}/bin/kitty";
   };
 
 }

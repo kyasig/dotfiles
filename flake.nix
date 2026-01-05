@@ -12,9 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixmobar.url = "git+https://codeberg.org/xmobar/xmobar.git/?dir=nix";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
       url = "github:nix-community/stylix";

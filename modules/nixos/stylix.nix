@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     image = ../home-manager/wallpaper.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     fonts = {
       sizes = {
         applications = 10;
@@ -30,4 +30,11 @@
     };
     opacity.terminal = 0.90;
   };
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+    ];
+  };
 }
+

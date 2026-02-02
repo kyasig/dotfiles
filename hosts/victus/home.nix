@@ -10,6 +10,9 @@
       texliveFull
       freetube
       telegram-desktop
+      gap-full
+      brave
+      android-studio
     ];
   };
 }

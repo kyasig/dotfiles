@@ -6,7 +6,7 @@
 }:
 {
   programs.librewolf = {
-    enable = true;
+    enable = false;
     profiles.ky = {
       search.default = "google";
       isDefault = true;

@@ -17,6 +17,7 @@ let
     "fy" = "yazi $(fd -t d | fzf)";
     "ac" = "ani-cli";
     "z" = "zathura";
+    "excel" = "sc-im";
   };
 in
 {
@@ -24,6 +25,7 @@ in
     ani-cli
     atool
     cowsay
+    maim
     bottom
     btop
     htop
@@ -40,9 +42,14 @@ in
     lazygit
     pipes-rs
     ghc
+    sc-im
     sl
-    gap
     yazi
+    pandoc
+    poppler-utils
+    mpv
+    unzip
+    wmctrl
   ];
   programs.fzf = {
     enable = true;

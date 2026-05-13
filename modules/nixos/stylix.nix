@@ -3,6 +3,11 @@
   stylix = {
     enable = true;
     image = ../home-manager/wallpaper.jpg;
+    #cursor = {
+    #  name = "Bibata-Modern-Classic";
+    #  package = pkgs.bibata-cursors;
+    #  size = 16;
+    #};
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     fonts = {
       sizes = {

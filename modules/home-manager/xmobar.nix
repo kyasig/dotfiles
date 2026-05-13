@@ -31,7 +31,7 @@
       template = "  %UnsafeXMonadLog% }{<fc=${color9}> </fc>%memory% <fc=${colorA}> </fc>%cpu% <fc=${colorB}> </fc>%uptime% <fc=${colorC}> </fc>%disku% <fc=${color8}> </fc>%default:Master% <fc=${colorD}> </fc>%battery% <fc=${colorE}> </fc>%date% ";
       commands = ''
           Run Cpu ["-t", "<total>%"] 10
-        , Run Memory ["-t","<used>m used"] 10
+        , Run Memory ["-t","<usedratio>%"] 10
         , Run Date "%b %d (%a) %r" "date" 10
         , Run BatteryP ["ACAD", "BAT0", "hidpp_battery_0"] ["-t", "<left>%"] 3
         , Run Uptime ["-t","<days>d <hours>h <minutes>m"] 10

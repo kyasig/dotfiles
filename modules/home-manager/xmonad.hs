@@ -37,33 +37,20 @@ myMod = mod4Mask
 
 myTerminal = "kitty"
 
-myBrowser = "firefox"
-
-myFileMan = "yazi"
-
-myPassMan = "bitwarden"
-
-myRunCmd = "rofi -show drun"
-
+myRunCmd = "bemenu-run"
 
 myWorkspaces = show <$> [1 .. 9]
 
-myBorderWidth = 4
-
-myNormalBorderColor = color00
-
-myFocusedBorderColor = color0E
 
 -- keybindings
 myKeys =
   [ ("M-<Return>", spawn myTerminal),
     ("M-q", spawn "xmonad --recompile; xmonad --restart"),
-    ("M-b", spawn myBrowser),
     ("M-r", spawn myRunCmd),
     ("M-<Delete>", spawn "rofi -show power-menu -modi power-menu:rofi-power-menu"),
     ("M-w", spawn "rofi -show window"),
     ("M-C-b", spawn "bm"),
-    ("M-C-s", spawn "flameshot gui"),
+    ("M-C-s", spawn "maim -s | xclip -selection clipboard -t image/png"),
     ("M-<F3>", spawn "brightnessctl set +5"),
     ("M-<F2>", spawn "brightnessctl set 5-"),
     ("M-<F7>", spawn "amixer set Master 2%+"),
@@ -101,21 +88,22 @@ myKeys =
 
 -- layouts
 myLayout =
-  let full = R.named "Full" $ noBorders Full -- for jumpToLayout
-      dwind =
-        R.named "Dwind" $ Dwindle R CW 1.1 1.1
+  let full =
+        R.renamed [R.Replace "Full"] $ noBorders Full -- for jumpToLayout
       wide =
-        R.named "Wide" $ Mirror tall
+        R.renamed [R.Replace "Wide"] $ Mirror tall
       tall =
-        R.named "Tall" $ ResizableTall 1 (3 / 100) (1 / 2) []
-      threecol = R.named "Threecol" $ ThreeColMid 1 (3/100) (1/2)
+        R.renamed [R.Replace "Tall"] $ ResizableTall 1 (3 / 100) (1 / 2) []
+--      threecol = R.named "Threecol" $ ThreeColMid 1 (3/100) (1/2)
    in lessBorders OnlyScreenFloat $
         avoidStruts
           ( R.renamed [R.CutWordsLeft 1] $
-              spacingRaw False (Border 3 3 3 3) True (Border 3 3 3 3) True $
-                tall ||| dwind ||| wide ||| threecol
+              spacingWithEdge 3 $
+                tall ||| wide
           )
           ||| full
+
+
 
 
 -- managehook
@@ -136,10 +124,10 @@ myManageHook =
 scratchpads =
   let customFloat = customFloating $ W.RationalRect (1 / 12) (1 / 10) (5 / 6) (5 / 6)
    in [ NS "term" (myTerminal ++ " -T term") (title =? "term") customFloat,
-        NS "passman" myPassMan (className =? myPassMan) customFloat,
+        ----NS "passman" myPassMan (className =? myPassMan) customFloat,
         NS "volume" (myTerminal ++ " -T volume -e pulsemixer") (title =? "volume") customFloat,
-        NS "top" (myTerminal ++ " -T top -e btop") (title =? "top") customFloat,
-        NS "file" (myTerminal ++ " -T file -e " ++ myFileMan) (title =? "file") customFloat
+        NS "top" (myTerminal ++ " -T top -e btm") (title =? "top") customFloat,
+        NS "file" (myTerminal ++ " -T file -e " ++ "yazi") (title =? "file") customFloat
       ]
 
 -- eventhook
@@ -156,7 +144,9 @@ mySB =
     clickablePP $ -- lifts pp to X pp
       filterOutWsPP [scratchpadWorkspaceTag] $
         def
-          { ppCurrent = xmobarColor color00 color0E . pad,
+          {
+            --ppCurrent = xmobarColor color09 "",
+            ppCurrent = xmobarBorder "Bottom" color09 2,
             ppHidden = xmobarColor color05 "",
             ppTitle = xmobarColor color05 "" . shorten 40,
             ppLayout =
@@ -184,9 +174,9 @@ main =
                 startupHook = myStartupHook,
                 manageHook = myManageHook,
                 handleEventHook = myHandleEventHook,
-                borderWidth = myBorderWidth,
-                normalBorderColor = myNormalBorderColor,
-                focusedBorderColor = myFocusedBorderColor,
+                borderWidth = 4,
+                normalBorderColor = color00,
+                focusedBorderColor = color09,
                 workspaces = myWorkspaces,
                 logHook = workspaceHistoryHook
               }

@@ -31,6 +31,8 @@
   services.xserver.xkb.layout = "us";
   services.xserver.windowManager.xmonad.enable = true;
 
+  services.displayManager.ly.enable = true;
+
   services.printing.enable = true;
   services.libinput.enable = true;
   services.udisks2.enable = true;
@@ -65,6 +67,7 @@
   };
   programs.nano.enable = false;
 
+  services.dbus.enable = true;
   system.stateVersion = "26.05";
 
 }

@@ -12,7 +12,8 @@
       telegram-desktop
       gap-full
       brave
-      android-studio
+      transmission_4-gtk
+      bitwarden-desktop
     ];
   };
 }

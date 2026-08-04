@@ -21,6 +21,15 @@
   networking.hostName = "sig";
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.settings = {
+    connectivity = {
+      enabled = true;
+      uri = "http://neverssl.com";
+      interval = 300;
+      response = "success";
+    };
+  };
+  programs.nm-applet.enable = true;
 
   time.timeZone = "America/Los_Angeles";
 
@@ -48,10 +57,12 @@
       "video"
       "audio"
       "networkmanager"
+      "adbusers"
     ];
     packages = with pkgs; [
       lazygit
       nixfmt-rfc-style
+      networkmanagerapplet
     ];
   };
   environment.systemPackages = with pkgs; [

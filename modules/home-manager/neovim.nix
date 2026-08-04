@@ -46,7 +46,7 @@
       };
       lsp = {
         enable = true;
-        lazyload.enable = true;
+        #lazyload.enable = true;
         servers = {
           nixd.enable = true;
           texlab.enable = true;

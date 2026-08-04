@@ -136,6 +136,7 @@ myHandleEventHook = swallowEventHook (className =? myTerminal) $ return True
 -- startuphook
 myStartupHook = do
   spawnOnce "xset r rate 200 50 &"
+  spawnOnce "nm-applet"
   setWMName "LG3D"
 
 -- statusbar

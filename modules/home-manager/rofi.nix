@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,... }:
 {
   programs.rofi = {
     enable = true;
     extraConfig = {
       modi = "drun";
+      display-drun = "Spawn ";
     };
     location = "center";
     plugins = with pkgs; [
